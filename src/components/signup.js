@@ -1,23 +1,16 @@
 import React from "react";
+import LoginSignUpTab from './loginSignUpTab';
 
 const SingUp = ({ classes }) => {
   return (
     <div>
+      <div className="login-sec">
+      <LoginSignUpTab />
       <div className="sign_in_sec" id="tab-2">
-        <div className="signup-tab">
-          <i className="fa fa-long-arrow-left" />
-          <h2>johndoe@example.com</h2>
-          <ul>
-            <li data-tab="tab-3" className="current">
-              <a href="#">User</a>
-            </li>
-            <li data-tab="tab-4">
-              <a href="#">Company</a>
-            </li>
-          </ul>
-        </div>
+       
         {/*signup-tab end*/}
         <div className="dff-tab current" id="tab-3">
+          <h3>Sign Up</h3>
           <form>
             <div className="row">
               <div className="col-lg-12 no-pdd">
@@ -28,25 +21,17 @@ const SingUp = ({ classes }) => {
               </div>
               <div className="col-lg-12 no-pdd">
                 <div className="sn-field">
-                  <input type="text" name="country" placeholder="Country" />
+                  <input type="text" name="email" placeholder="email" />
                   <i className="la la-globe" />
                 </div>
               </div>
               <div className="col-lg-12 no-pdd">
                 <div className="sn-field">
-                  <select>
-                    <option>Category</option>
-                    <option>Category 1</option>
-                    <option>Category 2</option>
-                    <option>Category 3</option>
-                    <option>Category 4</option>
-                  </select>
-                  <i className="la la-dropbox" />
-                  <span>
-                    <i className="fa fa-ellipsis-h" />
-                  </span>
+                  <input type="text" name="username" placeholder="User Handle Name" />
+                  <i className="la la-user" />
                 </div>
               </div>
+              
               <div className="col-lg-12 no-pdd">
                 <div className="sn-field">
                   <input
@@ -67,21 +52,7 @@ const SingUp = ({ classes }) => {
                   <i className="la la-lock" />
                 </div>
               </div>
-              <div className="col-lg-12 no-pdd">
-                <div className="checky-sec st2">
-                  <div className="fgt-sec">
-                    <input type="checkbox" name="cc" id="c2" />
-                    <label htmlFor="c2">
-                      <span />
-                    </label>
-                    <small>
-                      Yes, I understand and agree to the workwise Terms &amp;
-                      Conditions.
-                    </small>
-                  </div>
-                  {/*fgt-sec end*/}
-                </div>
-              </div>
+              
               <div className="col-lg-12 no-pdd">
                 <button type="submit" value="submit">
                   Get Started
@@ -155,6 +126,7 @@ const SingUp = ({ classes }) => {
         </div>
       </div>
     </div>
+   </div> 
   );
 };
 

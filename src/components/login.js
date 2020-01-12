@@ -1,15 +1,10 @@
 import React from "react";
+import {Link} from 'react-router-dom';
+import LoginSignUpTab from './loginSignUpTab';
 const LoginPage = ({ classes }) => {
   return (
     <div className="login-sec">
-      <ul className="sign-control">
-        <li data-tab="tab-1" className="current">
-          <a href="#">Sign in</a>
-        </li>
-        <li data-tab="tab-2">
-          <a href="#">Sign up</a>
-        </li>
-      </ul>
+      <LoginSignUpTab />
       <div className="sign_in_sec current" id="tab-1">
         <h3>Sign in</h3>
         <form>

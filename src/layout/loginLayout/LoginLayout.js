@@ -1,4 +1,5 @@
 import React from "react";
+import LoginBanner from '../../components/loginBanner';
 const LoginLayout = ({ children }) => (
   <div>
     <div className="wrapper sign-in">
@@ -7,17 +8,7 @@ const LoginLayout = ({ children }) => (
           <div className="signin-pop">
             <div className="row">
               <div className="col-md-6">
-                <div className="cmp-info">
-                  <div className="cm-logo">
-                    <img src="images/cm-logo.png" alt="" />
-                    <p>
-                      Workwise, is a global freelancing platform and social
-                      networking where businesses and independent professionals
-                      connect and collaborate remotely
-                    </p>
-                  </div>
-                  <img src="images/cm-main-img.png" alt="" />
-                </div>
+               <LoginBanner /> 
               </div>
               <div className="col-md-6">{children}</div>
             </div>
