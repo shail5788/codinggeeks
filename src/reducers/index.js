@@ -1,3 +1,8 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from "redux";
+import PostReducer from "./postReducer";
+import overlayReducer from "./overLayReducer";
 
-export default combineReducers({});
+export default combineReducers({
+  overlayReducer,
+  PostReducer
+});

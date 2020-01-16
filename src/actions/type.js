@@ -1,0 +1,2 @@
+export const SET_OVERLAY = "SET_OVERLAY";
+export const REMOVE_OVERLAY = "REMOVE_OVERLAY";
