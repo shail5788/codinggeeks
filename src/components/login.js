@@ -1,24 +1,61 @@
-import React from "react";
-import {Link} from 'react-router-dom';
+import React,{useState, useEffect} from "react";
+import PropTypes from "prop-types";
+import {Link,Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 import LoginSignUpTab from './loginSignUpTab';
-const LoginPage = ({ classes }) => {
+import {login} from "../actions/authAction";
+
+const LoginPage = ({ classes,login,auth:{isAuthencated} }) => {
+   const [formData,setFormData]=useState({
+      email:'',
+      password:''
+   })
+  
+   const onChange=(e)=>{
+      setFormData({...formData,[e.target.name]:e.target.value})
+   }
+   const onSubmit=async(e)=>{
+      e.preventDefault();
+      await login(formData)
+   
+     // console.log(formData)
+   }
+   if(isAuthencated){
+      return <Redirect to="/dashboard" />
+   }
+   const {email,password}= formData;
   return (
     <div className="login-sec">
       <LoginSignUpTab />
       <div className="sign_in_sec current" id="tab-1">
         <h3>Sign in</h3>
-        <form>
+        <form onSubmit={e=>onSubmit(e) }>
           <div className="row">
             <div className="col-lg-12 no-pdd">
               <div className="sn-field">
-                <input type="text" name="username" placeholder="Username" />
+                <input 
+                  type="email"
+                  name="email" 
+                  value={email}
+                  onChange={e=>onChange(e)}
+                  placeholder="Username"
+                  required
+
+                   />
                 <i className="la la-user" />
               </div>
               {/*sn-field end*/}
             </div>
             <div className="col-lg-12 no-pdd">
               <div className="sn-field">
-                <input type="password" name="password" placeholder="Password" />
+                <input 
+                  type="password" 
+                  name="password" 
+                  value={password}
+                  onChange={e=>onChange(e)}
+                  placeholder="Password"
+                  required 
+                  />
                 <i className="la la-lock" />
               </div>
             </div>
@@ -42,7 +79,7 @@ const LoginPage = ({ classes }) => {
             </div>
           </div>
         </form>
-        <div className="login-resources">
+        {/* <div className="login-resources">
           <h4>Login Via Social Account</h4>
           <ul>
             <li>
@@ -58,12 +95,19 @@ const LoginPage = ({ classes }) => {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
         {/*login-resources end*/}
       </div>
       {/*sign_in_sec end*/}
     </div>
   );
 };
+LoginPage.propType={
+  login:PropTypes.func.isRequired,
+  isAuthenticated:PropTypes.bool
+}
+const mapStateToProp=state=>({
+  auth:state.AuthReducer
+})
 
-export default LoginPage;
+export default connect(mapStateToProp,{login})(LoginPage);

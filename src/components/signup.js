@@ -1,7 +1,28 @@
-import React from "react";
+import React,{useState} from "react";
+import {connect} from "react-redux";
+import PropTypes from 'prop-types';
 import LoginSignUpTab from './loginSignUpTab';
+import {userSignUp} from "../actions/authAction";
 
-const SingUp = ({ classes }) => {
+const SingUp = ({ classes ,userSignUp}) => {
+
+  const [formData,setFormData]=useState({
+
+      name:"",
+      handle:"",
+      email:"",
+      password:"",
+      repeatPassword:""
+  })
+  const {name,handle,email,password,repeatPassword}=formData;
+  const onChange=e=>{
+      setFormData({...formData,[e.target.name]:e.target.value})
+  }
+  const SingUp=e=>{
+    e.preventDefault();
+    userSignUp(formData)
+    //console.log(formData);
+  }
   return (
     <div>
       <div className="login-sec">
@@ -11,23 +32,38 @@ const SingUp = ({ classes }) => {
         {/*signup-tab end*/}
         <div className="dff-tab current" id="tab-3">
           <h3>Sign Up</h3>
-          <form>
+          <form onSubmit={e=>SingUp(e)}>
             <div className="row">
               <div className="col-lg-12 no-pdd">
                 <div className="sn-field">
-                  <input type="text" name="name" placeholder="Full Name" />
+                  <input type="text"
+                    name="name"
+                    value={name}
+                    onChange={e=>onChange(e)}
+                    placeholder="Full Name"
+                    required />
                   <i className="la la-user" />
                 </div>
               </div>
               <div className="col-lg-12 no-pdd">
                 <div className="sn-field">
-                  <input type="text" name="email" placeholder="email" />
+                  <input
+                    type="text"
+                    name="email"
+                    value={email}
+                    onChange={e=>onChange(e)}
+                    placeholder="email" />
                   <i className="la la-globe" />
                 </div>
               </div>
               <div className="col-lg-12 no-pdd">
                 <div className="sn-field">
-                  <input type="text" name="username" placeholder="User Handle Name" />
+                  <input 
+                      type="text"
+                      name="handle"
+                      value={handle}
+                      onChange={e=>onChange(e)}
+                      placeholder="User Handle Name" />
                   <i className="la la-user" />
                 </div>
               </div>
@@ -37,6 +73,8 @@ const SingUp = ({ classes }) => {
                   <input
                     type="password"
                     name="password"
+                    value={password}
+                    onChange={e=>onChange(e)}
                     placeholder="Password"
                   />
                   <i className="la la-lock" />
@@ -46,7 +84,9 @@ const SingUp = ({ classes }) => {
                 <div className="sn-field">
                   <input
                     type="password"
-                    name="repeat-password"
+                    name="repeatPassword"
+                    value={repeatPassword}
+                    onChange={e=>onChange(e)}
                     placeholder="Repeat Password"
                   />
                   <i className="la la-lock" />
@@ -62,72 +102,13 @@ const SingUp = ({ classes }) => {
           </form>
         </div>
         {/*dff-tab end*/}
-        <div className="dff-tab" id="tab-4">
-          <form>
-            <div className="row">
-              <div className="col-lg-12 no-pdd">
-                <div className="sn-field">
-                  <input
-                    type="text"
-                    name="company-name"
-                    placeholder="Company Name"
-                  />
-                  <i className="la la-building" />
-                </div>
-              </div>
-              <div className="col-lg-12 no-pdd">
-                <div className="sn-field">
-                  <input type="text" name="country" placeholder="Country" />
-                  <i className="la la-globe" />
-                </div>
-              </div>
-              <div className="col-lg-12 no-pdd">
-                <div className="sn-field">
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                  />
-                  <i className="la la-lock" />
-                </div>
-              </div>
-              <div className="col-lg-12 no-pdd">
-                <div className="sn-field">
-                  <input
-                    type="password"
-                    name="repeat-password"
-                    placeholder="Repeat Password"
-                  />
-                  <i className="la la-lock" />
-                </div>
-              </div>
-              <div className="col-lg-12 no-pdd">
-                <div className="checky-sec st2">
-                  <div className="fgt-sec">
-                    <input type="checkbox" name="cc" id="c3" />
-                    <label htmlFor="c3">
-                      <span />
-                    </label>
-                    <small>
-                      Yes, I understand and agree to the workwise Terms &amp;
-                      Conditions.
-                    </small>
-                  </div>
-                  {/*fgt-sec end*/}
-                </div>
-              </div>
-              <div className="col-lg-12 no-pdd">
-                <button type="submit" value="submit">
-                  Get Started
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
+        
       </div>
     </div>
    </div> 
   );
 };
-
-export default SingUp;
+SingUp.propTypes={
+  userSignUp:PropTypes.func.isRequired
+}
+export default connect(null,{userSignUp})(SingUp);
