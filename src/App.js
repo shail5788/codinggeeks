@@ -17,32 +17,38 @@ import SignUp from "./components/signup";
 import UserPage from "./UserPage";
 import LoginLayout from "./layout/loginLayout/LoginLayout";
 import DashboardLayout from "./layout/dashboadLayout/DashboardLayout";
-import DashboardPage from './components/dashboard/dashboad';
+import DashboardPage from "./components/dashboard/dashboad";
+import AccountSetting from "./components/accountSetting/accountSetting";
 
 /* 
    Redux stuff 
  */
-import {Provider} from 'react-redux';
-import store from './store';
+import { Provider } from "react-redux";
+import store from "./store";
 
 const App = ({ classs }) => {
   return (
     <Provider store={store}>
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Redirect to="/login" />
-        </Route>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/login" />
+          </Route>
 
-        <AppRoute path="/login" component={LoginPage} layout={LoginLayout} />
-        <AppRoute path="/signup" component={SignUp} layout={LoginLayout} />
-        <AppRoute
-          path="/dashboard"
-          component={DashboardPage}
-          layout={DashboardLayout}
-        />
-      </Switch>
-    </Router>
+          <AppRoute path="/login" component={LoginPage} layout={LoginLayout} />
+          <AppRoute path="/signup" component={SignUp} layout={LoginLayout} />
+          <AppRoute
+            path="/dashboard"
+            component={DashboardPage}
+            layout={DashboardLayout}
+          />
+          <AppRoute
+            path="/account"
+            component={AccountSetting}
+            layout={DashboardLayout}
+          />
+        </Switch>
+      </Router>
     </Provider>
   );
 };

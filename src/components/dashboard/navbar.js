@@ -1,21 +1,19 @@
 import React, { useState } from "react";
-import {connect} from "react-redux";
-import PropTypes from 'prop-types';
-import {Link,Redirect} from 'react-router-dom';
-import {logout} from '../../actions/authAction';
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { Link, Redirect } from "react-router-dom";
+import { logout } from "../../actions/authAction";
 
-const NabBar = ({logout,auth:{isAuthencated}}) => {
+const NabBar = ({ logout, auth: { isAuthencated } }) => {
   const [account, setAcount] = useState(false);
 
   const openAccountSetting = () => {
     // setAcount(true);
   };
-  const logOut=(e)=>{
-    
-     logout()
-     
-  }
-  if(isAuthencated==null|| !isAuthencated){
+  const logOut = e => {
+    logout();
+  };
+  if (isAuthencated == null || !isAuthencated) {
     return <Redirect to="/login" />;
   }
   return (
@@ -23,9 +21,9 @@ const NabBar = ({logout,auth:{isAuthencated}}) => {
       <div className="container">
         <div className="header-data">
           <div className="logo">
-            <a href="index.html">
+            <Link to="/dashboard">
               <img src="images/logo.png" alt="" />
-            </a>
+            </Link>
           </div>
           {/*logo end*/}
           <div className="search-bar">
@@ -40,12 +38,12 @@ const NabBar = ({logout,auth:{isAuthencated}}) => {
           <nav>
             <ul>
               <li>
-                <a href="index.html">
+                <Link to="/dashboard">
                   <span>
                     <img src="images/icon1.png" alt="" />
                   </span>
                   Home
-                </a>
+                </Link>
               </li>
               {/* <li>
                 <a href="companies.html">
@@ -300,7 +298,7 @@ const NabBar = ({logout,auth:{isAuthencated}}) => {
               <h3>Setting</h3>
               <ul className="us-links">
                 <li>
-                  <a href="profile-account-setting.html">Account Setting</a>
+                  <Link to="/account">Account Setting</Link>
                 </li>
                 <li>
                   <a href="#">Privacy</a>
@@ -313,7 +311,9 @@ const NabBar = ({logout,auth:{isAuthencated}}) => {
                 </li>
               </ul>
               <h3 className="tc">
-                <Link to="#" onClick={e=>logOut(e)}>Logout</Link>
+                <Link to="#" onClick={e => logOut(e)}>
+                  Logout
+                </Link>
               </h3>
             </div>
             {/*user-account-settingss end*/}
@@ -325,11 +325,14 @@ const NabBar = ({logout,auth:{isAuthencated}}) => {
   );
 };
 
-NabBar.propTypes={
-  logout:PropTypes.func.isRequired
-}
+NabBar.propTypes = {
+  logout: PropTypes.func.isRequired
+};
 
-const mapStateToProp=state=>({
-   auth:state.AuthReducer
-})
-export default connect(mapStateToProp,{logout})(NabBar);
+const mapStateToProp = state => ({
+  auth: state.AuthReducer
+});
+export default connect(
+  mapStateToProp,
+  { logout }
+)(NabBar);
