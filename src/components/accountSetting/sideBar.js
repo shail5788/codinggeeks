@@ -1,21 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const SideBar = ({ url }) => {
   return (
     <div className="acc-leftbar">
       <div className="nav nav-tabs" id="nav-tab" role="tablist">
-        <Link
-          className="nav-item nav-link active"
+        <NavLink
+          className="nav-item nav-link "
+          activeClassName="active"
           id="nav-acc-tab"
           data-toggle="tab"
-          to={`${url}/account-setting`}
+          to="/account/account-setting"
           role="tab"
           aria-controls="nav-acc"
           aria-selected="true"
         >
           <i className="la la-cogs" />
           Account Setting
-        </Link>
+        </NavLink>
         <a
           className="nav-item nav-link"
           id="nav-status-tab"
@@ -28,18 +29,19 @@ const SideBar = ({ url }) => {
           <i className="fa fa-line-chart" />
           Status
         </a>
-        <a
+        <NavLink
           className="nav-item nav-link"
           id="nav-password-tab"
+          activeClassName="active"
           data-toggle="tab"
-          href="#nav-password"
+          to="/account/change-password"
           role="tab"
           aria-controls="nav-password"
           aria-selected="false"
         >
           <i className="fa fa-lock" />
           Change Password
-        </a>
+        </NavLink>
         <a
           className="nav-item nav-link"
           id="nav-notification-tab"

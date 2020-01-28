@@ -13,7 +13,9 @@ const NabBar = ({ logout, auth: { isAuthencated } }) => {
   const logOut = e => {
     logout();
   };
-  if (isAuthencated == null || !isAuthencated) {
+  const token = localStorage.getItem("token");
+  if ((isAuthencated == null || !isAuthencated) && token == "") {
+    console.log("localStore", localStorage.getItem("token"));
     return <Redirect to="/login" />;
   }
   return (

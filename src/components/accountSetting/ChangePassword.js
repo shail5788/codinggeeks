@@ -3,10 +3,11 @@ import React from "react";
 const ChangePassword = () => {
   return (
     <div
-      className="tab-pane fade"
+      className="tab-pane"
       id="nav-password"
       role="tabpanel"
       aria-labelledby="nav-password-tab"
+      style={{ display: "block" }}
     >
       <div className="acc-setting">
         <h3>Account Setting</h3>
@@ -46,9 +47,7 @@ const ChangePassword = () => {
           </div>
           <div className="cp-field">
             <h5>
-              <a href="#" title>
-                Forgot Password?
-              </a>
+              <a href="#">Forgot Password?</a>
             </h5>
           </div>
           <div className="save-stngs pd2">

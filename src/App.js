@@ -19,7 +19,7 @@ import LoginLayout from "./layout/loginLayout/LoginLayout";
 import DashboardLayout from "./layout/dashboadLayout/DashboardLayout";
 import DashboardPage from "./components/dashboard/dashboad";
 import AccountSetting from "./components/accountSetting/accountSetting";
-
+import AccSetting from "./components/accountSetting/accSetting";
 /* 
    Redux stuff 
  */
@@ -43,7 +43,20 @@ const App = ({ classs }) => {
             layout={DashboardLayout}
           />
           <AppRoute
+            exact
             path="/account"
+            component={AccountSetting}
+            layout={DashboardLayout}
+          />
+          <AppRoute
+            path="/account/account-setting"
+            exact
+            component={AccountSetting}
+            layout={DashboardLayout}
+          />
+          <AppRoute
+            path="/account/change-password"
+            exact
             component={AccountSetting}
             layout={DashboardLayout}
           />
