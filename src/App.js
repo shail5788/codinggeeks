@@ -48,18 +48,18 @@ const App = ({ classs }) => {
             component={AccountSetting}
             layout={DashboardLayout}
           />
-          <AppRoute
-            path="/account/account-setting"
+          {/* <AppRoute
+            path="/account/:child"
             exact
             component={AccountSetting}
             layout={DashboardLayout}
-          />
-          <AppRoute
+          /> */}
+          {/* <AppRoute
             path="/account/change-password"
             exact
             component={AccountSetting}
             layout={DashboardLayout}
-          />
+          /> */}
         </Switch>
       </Router>
     </Provider>

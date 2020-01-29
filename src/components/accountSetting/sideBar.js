@@ -8,76 +8,56 @@ const SideBar = ({ url }) => {
           className="nav-item nav-link "
           activeClassName="active"
           id="nav-acc-tab"
-          data-toggle="tab"
-          to="/account/account-setting"
-          role="tab"
-          aria-controls="nav-acc"
-          aria-selected="true"
+          to={`${url}/account-setting`}
         >
           <i className="la la-cogs" />
           Account Setting
         </NavLink>
-        <a
+        <NavLink
           className="nav-item nav-link"
           id="nav-status-tab"
-          data-toggle="tab"
-          href="#nav-status"
-          role="tab"
-          aria-controls="nav-status"
-          aria-selected="false"
+          activeClassName="active"
+          to={`${url}/status`}
         >
           <i className="fa fa-line-chart" />
           Status
-        </a>
+        </NavLink>
         <NavLink
           className="nav-item nav-link"
           id="nav-password-tab"
           activeClassName="active"
-          data-toggle="tab"
-          to="/account/change-password"
-          role="tab"
-          aria-controls="nav-password"
-          aria-selected="false"
+          to={`${url}/change-password`}
         >
           <i className="fa fa-lock" />
           Change Password
         </NavLink>
-        <a
+        <NavLink
           className="nav-item nav-link"
+          activeClassName="active"
           id="nav-notification-tab"
-          data-toggle="tab"
-          href="#nav-notification"
-          role="tab"
-          aria-controls="nav-notification"
-          aria-selected="false"
+          to={`${url}/notification`}
         >
           <i className="fa fa-flash" />
           Notifications
-        </a>
-        <a
+        </NavLink>
+        <NavLink
           className="nav-item nav-link"
           id="nav-privcy-tab"
-          data-toggle="tab"
-          href="#privcy"
-          role="tab"
-          aria-controls="privacy"
-          aria-selected="false"
+          activeClassName="active"
+          to={`${url}/request`}
         >
           <i className="fa fa-group" />
           Requests
-        </a>
-        <a
+        </NavLink>
+        <NavLink
           className="nav-item nav-link"
           id="security"
-          data-toggle="tab"
-          href="#security-login"
-          role="tab"
-          aria-controls="security-login"
-          aria-selected="false"
+          activeClassName="active"
+          to={`${url}/security-and-login`}
         >
           <i className="fa fa-user-secret" />
           Security and Login
-        </a>
+        </NavLink>
         <a
           className="nav-item nav-link"
           id="nav-privacy-tab"
@@ -102,18 +82,15 @@ const SideBar = ({ url }) => {
           <i className="fa fa-cc-diners-club" />
           Blocking
         </a>
-        <a
+        <NavLink
           className="nav-item nav-link"
           id="nav-deactivate-tab"
-          data-toggle="tab"
-          href="#nav-deactivate"
-          role="tab"
-          aria-controls="nav-deactivate"
-          aria-selected="false"
+          activeClassName="active"
+          to={`${url}/deactivate-account`}
         >
           <i className="fa fa-random" />
           Deactivate Account
-        </a>
+        </NavLink>
       </div>
     </div>
   );
